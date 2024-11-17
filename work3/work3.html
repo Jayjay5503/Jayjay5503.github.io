@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wallpaper Gallery - JJ's WORKS</title>
-  <!-- Bootstrap CSS -->
+  <link rel="icon" href="images/icon.png" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     body {
-      background-color: grey; /* Page background color */
+      background-color: grey;
       color: white;
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -20,9 +19,9 @@
       flex-direction: column;
     }
     .navbar {
-      position: sticky; /* Keep the navbar fixed at the top */
+      position: sticky;
       top: 0;
-      z-index: 1000; /* Ensure the navbar is above other content */
+      z-index: 1000;
     }
     .gallery {
       padding: 50px;
@@ -39,15 +38,15 @@
     }
     .img-thumbnail {
       cursor: pointer;
-      transition: transform 0.2s ease, filter 0.2s; /* Smooth transition for scale and filter */
-      width: 100%; /* Ensures the images are responsive */
-      height: 400px; /* Set height for better visibility */
-      object-fit: cover; /* Ensures images cover the thumbnail space */
-      border-radius: 8px; /* Rounded corners */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+      transition: transform 0.2s ease, filter 0.2s;
+      width: 100%;
+      height: 400px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .img-thumbnail:hover {
-      transform: scale(1.05); /* Slightly enlarge the image on hover */
+      transform: scale(1.05);
       filter: grayscale(100%) blur(2px);
     }
     footer {
@@ -61,7 +60,7 @@
       width: 100%;
     }
     .mode-btn {
-      margin-left: 10px; /* Space between buttons */
+      margin-left: 10px;
     }
   </style>
 </head>
@@ -71,7 +70,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="../index.html">
-        <i class="bi bi-arrow-left"></i> <!-- Back icon -->
+        <i class="bi bi-arrow-left"></i>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -97,19 +96,16 @@
     <h2 id="christmasGallery">Christmas Wallpapers</h2>
     <p>Explore our stunning collection of Christmas wallpapers that capture the festive spirit. Click on any image to view it in full size and get lost in the holiday charm!</p>
     <div class="row justify-content-center" id="christmasGalleryImages">
-      <!-- JavaScript will insert images here -->
     </div>
     <button class="btn btn-primary" id="loadMoreChristmas">Load More Christmas Wallpapers</button>
 
     <h2 id="darkGallery">Dark Minimalist Wallpapers</h2>
     <p>Discover our Dark Minimalist wallpapers that blend elegance with simplicity. Each design is crafted to bring a modern touch to your space. Click on any image for a detailed view!</p>
     <div class="row justify-content-center" id="darkGalleryImages">
-      <!-- JavaScript will insert images here -->
     </div>
     <button class="btn btn-primary" id="loadMoreDark">Load More Dark Minimalist Wallpapers</button>
   </div>
 
-  <!-- Modal for Image Preview -->
   <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -128,7 +124,6 @@
     &copy; 2024 JJ's WORKS | All rights reserved.
   </footer>
 
-  <!-- Bootstrap JS and dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const christmasImages = [
@@ -156,7 +151,7 @@
         const currentBatch = images.slice(currentIndex, currentIndex + batchSize);
         currentBatch.forEach((image) => {
           const colDiv = document.createElement('div');
-          colDiv.className = 'col-lg-3 col-md-4 col-sm-6 mb-4 text-center'; // Adjusted for better fit
+          colDiv.className = 'col-lg-3 col-md-4 col-sm-6 mb-4 text-center';
           colDiv.innerHTML = `
             <img src="images/${image}" class="img-fluid img-thumbnail" 
               onclick="openModal(this.src)">
@@ -166,26 +161,25 @@
         
         currentIndex += batchSize;
         if (currentIndex >= images.length) {
-          loadMoreButton.style.display = 'none'; // Hide button when no more images
+          loadMoreButton.style.display = 'none';
         }
 
-        // Change button text if images have been loaded
         if (currentIndex > batchSize) {
           loadMoreButton.innerText = 'See Less';
           loadMoreButton.setAttribute('onclick', `seeLess(${currentIndex}, '${loadMoreButtonId}')`);
         }
       }
 
-      loadImages(); // Load initial images
+      loadImages();
       loadMoreButton.addEventListener('click', loadImages);
     }
 
     function seeLess(currentIndex, loadMoreButtonId) {
       const gallery = document.getElementById(loadMoreButtonId === 'loadMoreChristmas' ? 'christmasGalleryImages' : 'darkGalleryImages');
       while (gallery.lastChild) {
-        gallery.removeChild(gallery.lastChild); // Remove all images
+        gallery.removeChild(gallery.lastChild);
       }
-      currentIndex = 0; // Reset index
+      currentIndex = 0;
       loadMoreButton.innerText = 'Load More';
       loadMoreButton.setAttribute('onclick', `loadImages(${currentIndex}, '${loadMoreButtonId}')`);
       createGallery(currentIndex === 0 ? christmasImages : darkImages, loadMoreButtonId === 'loadMoreChristmas' ? 'christmasGalleryImages' : 'darkGalleryImages', loadMoreButtonId, currentIndex, christmasBatchSize);
@@ -207,7 +201,6 @@
       }
     }
 
-    // Initialize galleries
     createGallery(christmasImages, 'christmasGalleryImages', 'loadMoreChristmas', christmasIndex, christmasBatchSize);
     createGallery(darkImages, 'darkGalleryImages', 'loadMoreDark', darkIndex, darkBatchSize);
   </script>
