@@ -284,10 +284,8 @@
     function handleInvalidUrl() {
       const validPages = ['index.html', 'work1/work1.html', 'work2/work2.html', 'work3/work3.html', 'work4/work4.html', 'work5/work5.html', 'work6/work6.html'];
 
-      // Get the current URL path
       const currentPath = window.location.pathname.split('/').pop();
 
-      // If the current path is not in the list of valid pages, redirect to the 404 page
       if (!validPages.includes(currentPath)) {
         window.location.href = '404.html';
       }
