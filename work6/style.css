@@ -43,6 +43,38 @@ body {
     color: #0f0e0e;
 }
 
+.gradient-button {
+    position: sticky;
+    top: 10px;
+    /* Adjust as needed */
+    z-index: 1000;
+    /* Ensures it stays on top of other elements */
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(45deg, #D23669, #642B73);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 10px;
+    /* Add spacing around the button */
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.gradient-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 768px) {
 
     .main-content h1 {
@@ -71,4 +103,5 @@ body {
         padding: 20px;
         max-width: 100%;
     }
+
 }
