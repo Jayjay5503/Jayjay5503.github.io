@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Japan's Places</title>
+    <link rel="icon" href="img/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #welcome {
+            background-image: url('img/workbg2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .btn-explore {
+            margin-top: 20px;
+        }
+
+        .btn-explore .btn {
+            background: linear-gradient(90deg, #ff6f61, #de5d3b);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-explore .btn:hover {
+            background: linear-gradient(90deg, #de5d3b, #ff6f61);
+            transform: scale(1.05);
+        }
+
+        #spot1,
+        #spot2,
+        #spot3 {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        #spot1 {
+            background-image: url('img/fujibg.jpg');
+        }
+
+        #spot2 {
+            background-image: url('img/kyotobg.jpg');
+        }
+
+        #spot3 {
+            background-image: url('img/osakabg.jpg');
+        }
+
+        .header-large {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 5vw;
+            font-weight: bold;
+            line-height: 1.2;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .text-wrapper {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-large {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar a {
+            color: #000;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #007BFF;
+        }
+
+        .next-button {
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .next-button .btn {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #000;
+            font-size: 20px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .next-button .btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.05);
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-large {
+                font-size: 8vw;
+            }
+
+            .text-large {
+                font-size: 0.9rem;
+            }
+
+            .btn-explore .btn {
+                font-size: 20px;
+                padding: 12px 25px;
+            }
+
+            .carousel img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-large {
+                font-size: 10vw;
+            }
+
+            .btn-explore .btn {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+
+            .carousel img {
+                height: 200px;
+            }
+
+            .text-large {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="../index.html">Back to Home Page</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#welcome">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#spot1">Spot 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="#spot2">Spot 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="#spot3">Spot 3</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div id="welcome" class="section">
+        <div class="text-center">
+            <h1 class="header-large">Place you must<br>visit in Japan</h1>
+            <div class="btn-explore">
+                <button class="btn btn-primary btn-lg" onclick="scrollToSpot(1)">Explore Japan's Places</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="spot1" class="section">
+        <div class="container">
+            <div class="row">
+                <!-- Text section -->
+                <div class="col-md-6">
+                    <div class="text-wrapper">
+                        <h1 class="header-large">MOUNT<br>FUJI</h1>
+                        <p class="text-large text-bold">Mount Fuji is the highest mountain in Japan, standing 3,776 meters tall. Mount Fuji lies about 100 kilometers southwest of Tokyo and is visible from the city on clear days.</p>
+                        <p class="text-large text-bold">It is one of Japan's "Three Holy Mountains". Mount Fuji has been a popular destination for tourists and mountain climbers alike.</p>
+                    </div>
+                </div>
+    
+                <!-- Map and carousel section -->
+                <div class="col-md-6">
+                    <!-- Map iframe with responsive class -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.345423494222!2d138.7272072162082!3d35.36063343432591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601a23bce8b32d6b%3A0x2714771e2bfe2f2d!2z44CSMjA1MTAwNjMuMzMwNDEwNDEs!5e0!3m2!1sen!2sus!4v1689028705935!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    
+                    <!-- Carousel for images -->
+                    <div id="fujiCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/fuji1.jpg" class="d-block w-100" alt="Mount Fuji 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/fuji2.jpg" class="d-block w-100" alt="Mount Fuji 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/fuji3.jpg" class="d-block w-100" alt="Mount Fuji 3">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/fuji4.jpg" class="d-block w-100" alt="Mount Fuji 4">
+                            </div>
+                        </div>
+                        <!-- Carousel controls -->
+                        <a class="carousel-control-prev" href="#fujiCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#fujiCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Next Button -->
+        <div class="next-button">
+            <button class="btn btn-secondary" onclick="scrollToSpot(2)">Next Spot</button>
+        </div>
+    </div>
+    
+
+    <div id="spot2" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-wrapper">
+                        <h1 class="header-large">KYOTO</h1>
+                        <p class="text-large text-bold">Kyoto is a city known for its classical Buddhist temples, gardens, imperial palaces, and traditional wooden houses. It was the capital of Japan for over a thousand years.
+                            Kyoto, once the capital of Japan, is a city on the island of Honshu. It's famous for its numerous classical Buddhist temples, as well as gardens, imperial palaces, Shinto shrines and traditional wooden houses. It’s also known for formal traditions such as kaiseki dining, consisting of multiple courses of precise dishes, and geisha, female entertainers often found in the Gion district.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="kyotoCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/kyoto1.jpg" class="d-block" alt="Kyoto 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/kyoto2.jpg" class="d-block" alt="Kyoto 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/kyoto3.jpg" class="d-block" alt="Kyoto 3">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#kyotoCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#kyotoCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="next-button">
+            <button class="btn btn-secondary" onclick="scrollToSpot(3)">Next Spot</button>
+        </div>
+    </div>
+
+    <div id="spot3" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-wrapper">
+                        <h1 class="header-large">OSAKA</h1>
+                        <p class="text-large text-bold">Osaka is a large port city and commercial center on Japan's Honshu Island. It is known for modern architecture, nightlife, and hearty street food. 
+                            Osaka is a large port city and commercial center on the Japanese island of Honshu. It's known for its modern architecture, nightlife and hearty street food. The 16th-century shogunate Osaka Castle, which has undergone several restorations, is its main historical landmark. It's surrounded by a moat and park with plum, peach and cherry-blossom trees.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="osakaCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/osaka1.jpg" class="d-block" alt="Osaka 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/osaka2.jpg" class="d-block" alt="Osaka 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/osaka3.jpg" class="d-block" alt="Osaka 3">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#osakaCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#osakaCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function scrollToSpot(spot) {
+            const spotId = `#spot${spot}`;
+            document.querySelector(spotId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>

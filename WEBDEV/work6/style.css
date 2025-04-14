@@ -1,0 +1,107 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #141414;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-content {
+    background: linear-gradient(to bottom, #423736, #987185, #D6AA9F, #E9D5B7, #F4E2D1);
+    min-height: 100vh;
+    text-align: justify;
+    padding: 0 20px;
+}
+
+.main-content h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 65px;
+    font-weight: bold;
+    color: #0d0463;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.main-content p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    line-height: 1.8;
+    color: #0f0f0f;
+    text-align: center;
+    margin: 0 auto;
+    padding: 100px;
+    max-width: 800px;
+}
+
+.main-content p strong {
+    font-weight: bold;
+    color: #0f0e0e;
+}
+
+.gradient-button {
+    position: sticky;
+    top: 10px;
+    /* Adjust as needed */
+    z-index: 1000;
+    /* Ensures it stays on top of other elements */
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(45deg, #D23669, #642B73);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 10px;
+    /* Add spacing around the button */
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.gradient-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+
+    .main-content h1 {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+
+    .main-content p {
+        font-size: 30px;
+        margin: 0 15px;
+        padding: 20px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .main-content h1 {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .main-content p {
+        font-size: 16px;
+        margin: 0 10px;
+        padding: 20px;
+        max-width: 100%;
+    }
+
+}

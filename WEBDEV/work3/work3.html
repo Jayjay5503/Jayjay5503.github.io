@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallpaper Gallery - JJ's WORKS</title>
+  <link rel="icon" href="images/icon.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: grey;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .gallery {
+      padding: 50px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 30px 0 20px;
+    }
+    .img-thumbnail {
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s;
+      width: 100%;
+      height: 400px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .img-thumbnail:hover {
+      transform: scale(1.05);
+      filter: grayscale(100%) blur(2px);
+    }
+    footer {
+      background-color: #181818;
+      color: #ffb703;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      position: relative;
+      width: 100%;
+    }
+    .mode-btn {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#christmasGallery">Christmas Wallpapers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#darkGallery">Dark Minimalist Wallpapers</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-light mode-btn" onclick="toggleMode('light')">Light Mode</button>
+        <button class="btn btn-outline-light mode-btn" onclick="toggleMode('dark')">Dark Mode</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="gallery">
+    <h1>THEMED WALLPAPERS</h1>
+
+    <h2 id="christmasGallery">Christmas Wallpapers</h2>
+    <p>Explore our stunning collection of Christmas wallpapers that capture the festive spirit. Click on any image to view it in full size and get lost in the holiday charm!</p>
+    <div class="row justify-content-center" id="christmasGalleryImages">
+    </div>
+    <button class="btn btn-primary" id="loadMoreChristmas">Load More Christmas Wallpapers</button>
+
+    <h2 id="darkGallery">Dark Minimalist Wallpapers</h2>
+    <p>Discover our Dark Minimalist wallpapers that blend elegance with simplicity. Each design is crafted to bring a modern touch to your space. Click on any image for a detailed view!</p>
+    <div class="row justify-content-center" id="darkGalleryImages">
+    </div>
+    <button class="btn btn-primary" id="loadMoreDark">Load More Dark Minimalist Wallpapers</button>
+  </div>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="modalImage" src="" class="img-fluid" alt="Preview">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2024 JJ's WORKS | All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const christmasImages = [
+      'xmas1.jpg', 'xmas2.jpg', 'xmas3.jpg', 'xmas4.jpg', 'xmas5.jpg',
+      'xmas6.jpg', 'xmas7.jpg', 'xmas8.jpg', 'xmas9.jpg', 'xmas10.jpg',
+      'xmas11.jpg', 'xmas12.jpg', 'xmas13.jpg', 'xmas14.jpg', 'xmas15.jpg'
+    ];
+
+    const darkImages = [
+      'dark1.jpg', 'dark2.jpg', 'dark3.jpg', 'dark4.jpg', 'dark5.jpg',
+      'dark6.jpg', 'dark7.jpg', 'dark8.jpg', 'dark9.jpg', 'dark10.jpg',
+      'dark11.jpg', 'dark12.jpg', 'dark13.jpg', 'dark14.jpg', 'dark15.jpg'
+    ];
+
+    let christmasIndex = 0;
+    const christmasBatchSize = 8;
+    let darkIndex = 0;
+    const darkBatchSize = 8;
+
+    function createGallery(images, galleryId, loadMoreButtonId, currentIndex, batchSize) {
+      const gallery = document.getElementById(galleryId);
+      const loadMoreButton = document.getElementById(loadMoreButtonId);
+      
+      function loadImages() {
+        const currentBatch = images.slice(currentIndex, currentIndex + batchSize);
+        currentBatch.forEach((image) => {
+          const colDiv = document.createElement('div');
+          colDiv.className = 'col-lg-3 col-md-4 col-sm-6 mb-4 text-center';
+          colDiv.innerHTML = `
+            <img src="images/${image}" class="img-fluid img-thumbnail" 
+              onclick="openModal(this.src)">
+          `;
+          gallery.appendChild(colDiv);
+        });
+        
+        currentIndex += batchSize;
+        if (currentIndex >= images.length) {
+          loadMoreButton.style.display = 'none';
+        }
+
+        if (currentIndex > batchSize) {
+          loadMoreButton.innerText = 'See Less';
+          loadMoreButton.setAttribute('onclick', `seeLess(${currentIndex}, '${loadMoreButtonId}')`);
+        }
+      }
+
+      loadImages();
+      loadMoreButton.addEventListener('click', loadImages);
+    }
+
+    function seeLess(currentIndex, loadMoreButtonId) {
+      const gallery = document.getElementById(loadMoreButtonId === 'loadMoreChristmas' ? 'christmasGalleryImages' : 'darkGalleryImages');
+      while (gallery.lastChild) {
+        gallery.removeChild(gallery.lastChild);
+      }
+      currentIndex = 0;
+      loadMoreButton.innerText = 'Load More';
+      loadMoreButton.setAttribute('onclick', `loadImages(${currentIndex}, '${loadMoreButtonId}')`);
+      createGallery(currentIndex === 0 ? christmasImages : darkImages, loadMoreButtonId === 'loadMoreChristmas' ? 'christmasGalleryImages' : 'darkGalleryImages', loadMoreButtonId, currentIndex, christmasBatchSize);
+    }
+
+    function openModal(imageSrc) {
+      document.getElementById('modalImage').src = imageSrc;
+      const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+      imageModal.show();
+    }
+
+    function toggleMode(mode) {
+      if (mode === 'dark') {
+        document.body.style.backgroundColor = '#181818';
+        document.body.style.color = 'white';
+      } else {
+        document.body.style.backgroundColor = 'white';
+        document.body.style.color = 'black';
+      }
+    }
+
+    createGallery(christmasImages, 'christmasGalleryImages', 'loadMoreChristmas', christmasIndex, christmasBatchSize);
+    createGallery(darkImages, 'darkGalleryImages', 'loadMoreDark', darkIndex, darkBatchSize);
+  </script>
+</body>
+</html>
