@@ -62,7 +62,7 @@ if (isset($_GET['page'])) {
   </nav>
 
   <div class="container-fluid d-block d-md-none mt-2">
-    <div class="d-flex justify-content-around bg-light text-white py-2 rounded">
+    <div class="d-flex justify-content-around bg-dark text-white py-2 rounded">
       <a href="?page=mikasa" class="text-white text-decoration-none">Mikasa</a>
       <a href="?page=molten" class="text-white text-decoration-none">Molten</a>
       <a href="?page=equipment" class="text-white text-decoration-none">Equipment</a>
