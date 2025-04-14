@@ -64,11 +64,8 @@ $evolution = [
       <div class="text-center text-white p-3">
         <p class="historyHeading h4 mb-4"><strong>FEDERATION</strong></p>
         <p class="historyText mb-0">
-          Volleyball is a team sport where two teams of six players try to score points by grounding the ball on the
-          opponent's court, using hands and arms to hit the ball over a net.
-
           The FIVB (Fédération Internationale de Volleyball) is the global governing body, organizing major
-          international events. Other regional bodies include AVC (Asia), CEV (Europe), NORCECA (North/Central America &
+          international events, icluding AVC (Asia), CEV (Europe), NORCECA (North/Central America &
           Caribbean), and CSV (South America).
         </p>
       </div>
