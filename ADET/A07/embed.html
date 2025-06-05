@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donate Embed</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4fff4;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .donate-box {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 128, 0, 0.1);
+      text-align: center;
+    }
+    .btn-donate {
+      background-color: #28a745;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-weight: bold;
+    }
+    #payment-options {
+      display: none;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="donate-box">
+    <h2 class="text-success">Donate to Save Mother Earth 🌎</h2>
+    <p class="text-secondary">Your kindness can make an environmental change.</p>
+    <button class="btn btn-donate" onclick="showOptions()">Donate</button>
+
+    <div id="payment-options">
+      <hr>
+      <h5 class="text-success mb-3">Donation Methods</h5>
+      <p><strong>Bank Transfer</strong><br>Green Earth Org<br>Account #: <strong>123-456-789</strong></p>
+      <p>or scan the QR code below:</p>
+      <img src="img/QR.png" alt="QR Code" style="max-width: 200px;" class="img-fluid rounded">
+    </div>
+  </div>
+
+  <script>
+    function showOptions() {
+      document.getElementById('payment-options').style.display = 'block';
+      event.target.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
